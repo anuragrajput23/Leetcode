@@ -16,18 +16,33 @@
 //     }
 // }
 
+// class Solution {
+//     public String largestEven(String s) {
+//         int n= s.length();
+//         int id = -1;
+//         for(int i=n-1; i>=0; i--){
+//             int check = s.charAt(i)-'0';
+//             if(check%2==0){
+//                 id = i;
+//                 break;
+//             }
+//         }
+//         if(id==-1) return "";
+//         return s.substring(0,id+1);
+//     }
+// }
+
 class Solution {
     public String largestEven(String s) {
-        int n= s.length();
-        int id = -1;
-        for(int i=n-1; i>=0; i--){
-            int check = s.charAt(i)-'0';
-            if(check%2==0){
-                id = i;
-                break;
-            }
+       StringBuilder sb = new StringBuilder(s);
+       int n = sb.length();
+       for(int i=n-1; i>=0; i--){
+        if((sb.charAt(i)-'0') % 2==0){
+            return sb.toString();
+        }else{
+            sb.deleteCharAt(i);
         }
-        if(id==-1) return "";
-        return s.substring(0,id+1);
+       }
+       return "";
     }
 }
