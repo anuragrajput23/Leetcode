@@ -15,16 +15,28 @@
 // }
 
 //without using space
+// class Solution {
+//     public boolean hasAlternatingBits(int n) {
+//         if(n==0) return true;
+//         int curr = n%2;
+//         n = n/2;
+//         while(n > 0){
+//             int temp = n%2;
+//             if(curr==temp) return false;
+//             curr = temp;
+//             n = n/2;
+//         }
+//         return true;
+//     }
+// }
+
+
+//using buit_in function
 class Solution {
     public boolean hasAlternatingBits(int n) {
-        if(n==0) return true;
-        int curr = n%2;
-        n = n/2;
-        while(n > 0){
-            int temp = n%2;
-            if(curr==temp) return false;
-            curr = temp;
-            n = n/2;
+        String binaryStr = Integer.toBinaryString(n);
+        for(int i=1; i<binaryStr.length(); i++){
+            if(binaryStr.charAt(i-1)==binaryStr.charAt(i)) return false;
         }
         return true;
     }
