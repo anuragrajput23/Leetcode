@@ -32,12 +32,20 @@
 
 
 //using buit_in function
+// class Solution {
+//     public boolean hasAlternatingBits(int n) {
+//         String binaryStr = Integer.toBinaryString(n);
+//         for(int i=1; i<binaryStr.length(); i++){
+//             if(binaryStr.charAt(i-1)==binaryStr.charAt(i)) return false;
+//         }
+//         return true;
+//     }
+// }
+
+//in O(1)
 class Solution {
     public boolean hasAlternatingBits(int n) {
-        String binaryStr = Integer.toBinaryString(n);
-        for(int i=1; i<binaryStr.length(); i++){
-            if(binaryStr.charAt(i-1)==binaryStr.charAt(i)) return false;
-        }
-        return true;
+        int check = n ^ (n>>1);
+        return (check & (check+1))==0;
     }
 }
