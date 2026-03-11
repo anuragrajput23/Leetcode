@@ -15,12 +15,25 @@ class Solution {
 }
 
 //M2
+// class Solution {
+//     public int bitwiseComplement(int n) {
+//         int mask = 1;
+//         while(mask < n){
+//             mask = (mask << 1) | 1;
+//         }
+//         return mask^n;
+//     }
+// }
+
+//M3
 class Solution {
     public int bitwiseComplement(int n) {
-        int mask = 1;
-        while(mask < n){
-            mask = (mask << 1) | 1;
-        }
+        // int mask = 1;
+        // while(mask < n){
+        //     mask = (mask << 1) | 1;
+        // }
+        int k = (int)(Math.log(n)/Math.log(2))+1;
+        int mask = (1 << k)-1;
         return mask^n;
     }
 }
