@@ -18,3 +18,22 @@ class Solution {
         return nums;
     }
 }
+
+//Most optimised
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] suff = new int[n];
+        suff[n-1] = 1;
+        for(int i=n-2; i>=0; i--){
+            suff[i] = nums[i+1]*suff[i+1];
+        }
+        int temp = 1;
+        for(int i=0; i<n; i++){
+            int curr = nums[i];
+            nums[i] = temp*suff[i];
+            temp *= curr;
+        }
+        return nums;
+    }
+}
