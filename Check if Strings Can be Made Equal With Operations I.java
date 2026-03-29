@@ -15,7 +15,7 @@
 //                 }
 //             }
 //         }
-//         return String.valueOf(arr1).equals(String.valueOf(arr2));
+//         return String.valueOf(arr1).equals(String.valueOf(arr2));  or return treue
 
 //     }
 //     public void reverse_position(char[] arr1, int i){
