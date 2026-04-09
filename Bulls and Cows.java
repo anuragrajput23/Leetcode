@@ -35,7 +35,6 @@ class Solution {
                 }
             }
         }
-
         return bulls+"A"+cow+"B";
     }
 }
