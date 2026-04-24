@@ -56,3 +56,22 @@ class Solution {
         return maxi;
     }
 }
+
+//this oneis the most optimised in single traversal
+class Solution {
+    public int maxDistance(int[] colors) {
+        int n = colors.length;
+        int maxi = 0;
+        int left_house = colors[0];
+        int right_house = colors[n-1];
+        for(int i=0; i<n; i++){
+            if(colors[i]!=left_house){
+                maxi = Math.max(maxi,i);
+            }
+            if(colors[i]!=right_house){
+                maxi = Math.max(maxi,n-1-i);
+            }
+        }
+        return maxi;
+    }
+}
