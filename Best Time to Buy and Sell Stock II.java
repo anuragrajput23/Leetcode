@@ -14,3 +14,23 @@ class Solution {
         return profit;
     }
 }
+
+class Solution {
+    Integer[][] dp;
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int profit = 0;
+        dp = new Integer[n][2];
+        return solve(prices,0,1,0);
+    }
+    public int solve(int[] prices, int i, int flag, int profit){
+        if(i==prices.length) return 0;
+        if(dp[i][flag]!=null) return dp[i][flag];
+        if(flag==1){
+            profit += Math.max(-prices[i] + solve(prices,i+1,0,profit), solve(prices,i+1,1,profit));
+        }else{
+            profit += Math.max(prices[i] + solve(prices,i+1, 1,profit), solve(prices,i+1,0,profit));
+        }
+        return dp[i][flag]= profit;
+    }
+}
