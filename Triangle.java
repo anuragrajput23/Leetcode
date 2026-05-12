@@ -52,3 +52,24 @@ class Solution {
 
     }
 }
+
+//space optimised
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int n = triangle.size();
+        if(n==1) return triangle.get(0).get(0);
+        int[] front = new int[n];
+        for(int i=n-1; i>=0; i--) front[i] = triangle.get(n-1).get(i);
+        int[] back = new int[n];
+        for(int i=n-2; i>=0; i--){
+            for(int j=i; j>=0; j--){
+                int diag = triangle.get(i).get(j) + front[j+1];
+                int down = triangle.get(i).get(j) + front[j];
+                back[j] = Math.min(diag, down);
+            }
+           front = back.clone();
+        }
+        return front[0];
+    }
+
+}
