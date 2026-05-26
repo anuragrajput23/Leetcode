@@ -44,3 +44,26 @@ class Solution {
         return dp[i][sum] = (take || ntake);
     }*/
 }
+class Solution {
+    static Boolean[][] dp;
+
+    static Boolean isSubsetSum(int arr[], int sum) {
+        // code here
+        int n = arr.length;
+        dp = new Boolean[n][sum+1];
+        return solve(0,n,arr,sum);
+
+    }
+    public static boolean solve(int i, int n, int[] arr, int target){
+        if(target==0) return true;
+        if(i==n) return false;
+
+        boolean take = false;
+        if(target >= arr[i]){
+            take = solve(i+1, n, arr, target-arr[i]);
+
+        }
+        boolean ntake = solve(i+1,n,arr,target);
+        return dp[i][target]= ntake || take;
+    }
+}
