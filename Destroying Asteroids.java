@@ -14,10 +14,7 @@ class Solution {
                 idx = i;
             }
         }
-        if(n==1){
-            if(mass >= asteroids[0]) return true;
-            return false;
-        }
+
         int i;
         for(i=idx+1; i<n; i++){
             if(sum >= asteroids[i]){
@@ -27,5 +24,22 @@ class Solution {
             }
         }
         return i>=n-1;
+    }
+}
+
+//slight optimisation
+class Solution {
+    public boolean asteroidsDestroyed(int mass, int[] asteroids) {
+        int n = asteroids.length;
+        Arrays.sort(asteroids);
+        long sum = mass;
+        for(int i=0; i<n; i++){
+            if(asteroids[i] <= sum){
+                sum += asteroids[i];
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
 }
