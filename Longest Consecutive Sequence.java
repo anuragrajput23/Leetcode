@@ -16,3 +16,27 @@ class Solution {
         return maxLen-1;
     }
 }
+
+//O(nlogn)
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        int n = nums.length;
+        if(n==0) return 0;
+        int ans = 0;
+        Arrays.sort(nums);
+        int lastElem = Integer.MIN_VALUE;
+        int maxiLen = 1;
+        int cnt = 0;
+        for(int i=0; i<n; i++){
+            if(nums[i]-1==lastElem){
+                cnt++;
+                lastElem = nums[i];
+            }else if(nums[i] != lastElem){
+                cnt = 1;
+                lastElem = nums[i];
+            }
+            maxiLen = Math.max(maxiLen, cnt);
+        }
+        return maxiLen;
+    }
+}
