@@ -57,3 +57,33 @@ class Solution {
         return dp[n][m];
     }
 }
+
+//space optimisation
+class Solution {
+    public int numDistinct(String s, String t) {
+        int n = s.length();
+        int m = t.length();
+        // int[][] dp = new int[n+1][m+1];
+        int[] prev = new int[m+1];
+        int[] curr = new int[m+1];
+        Arrays.fill(prev,0);
+        Arrays.fill(curr,0);
+        prev[0]=1;
+        curr[0]=1;
+
+
+        for(int i=1; i<n+1; i++){
+            for(int j=1; j<m+1; j++){
+                if(s.charAt(i-1)==t.charAt(j-1)){
+                    curr[j] = prev[j-1] + prev[j];
+                }else{
+                    curr[j] = prev[j];
+                }
+            }
+            int[] temp = prev;
+            prev = curr;
+            curr = temp;
+        }
+        return prev[m];
+    }
+}
